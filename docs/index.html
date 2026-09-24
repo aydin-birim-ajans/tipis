@@ -7,6 +7,9 @@
 <meta name="description" content="Tıpış gizlilik politikası: hesap yok, reklam yok, çocuktan kişisel veri toplanmaz.">
 <!-- Tıpış gizlilik politikası (24 Eylül 2026). Her iddia uygulamanın koduyla eşleştirildi (docs/YAYIN-KONTROL.md, "Gizlilik iddiaları");
      24 Eylül 2026 ikinci geçiş: sayaç 1.0.0'da kapalı (SAYAC_URL boş), sıfırlama kapsamı, hatırlatma koşulu, yedekleme notu koda uyduruldu.
+     24 Eylül 2026 b5: çocuk profilleri (isteğe bağlı ad, yalnız cihazda), haftalık rapor, kostüm, hatırlatmanın ebeveyn ayarına
+     taşınması, Papağan pratiği ve abonelik yönetimi cümlesi koda uyduruldu (lib/core/profiller.dart, lib/ebeveyn/ebeveyn_alani.dart,
+     lib/ebeveyn/odeme.dart, lib/oyunlar/papagan_pratik.dart).
      Yayın yeri: https://aydin-birim-ajans.github.io/tipis/ (GitHub Pages, yayından önce Aydın'ın onayıyla). -->
 <style>
 :root{--ink:#12343B;--sand:#F6E7C8;--cream:#FFF8EC;--sea:#2BB3A3;--coral:#FF6B4A;--mute:#5B6B6E}
@@ -51,11 +54,11 @@ a{color:#1F6F66}
   <p>Tıpış uygulamasını Birim Ajans Yazılım Limited Şirketi (“Birim Ajans”, “biz”) geliştirir. Sorularınız için: <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a></p>
 
   <h3>Hangi bilgiler yalnız cihazınızda kalır</h3>
-  <p>Seçtiğiniz yaş grubu, ayarlar (süre sınırı, dil, ses), tamamlanan dersler, öğrenilen kelimeler, çıkartmalar, oynama süresi, üyelik durumu ve aşağıda anlatılan kimliksiz kullanım sayıları yalnız cihazda saklanır. Uygulama bu bilgileri bize ya da başka birine göndermez. Telefonunuzun kendi yedekleme özelliği (iCloud ya da Google yedeklemesi) açıksa bu bilgiler, diğer uygulama verileri gibi sizin yedeğinize dahil olabilir; bu yedeğe bizim erişimimiz yoktur.</p>
-  <p>Ebeveyn alanındaki “İlerlemeyi sıfırla” düğmesi tamamlanan dersleri, öğrenilen kelimeleri ve çıkartmaları siler; ayarlar, üyelik durumu, oynama süresi kaydı ve kullanım sayıları bu düğmeyle silinmez. Uygulamayı silmek bu bilgilerin tamamını cihazdan siler.</p>
+  <p>Seçtiğiniz yaş grubu, ayarlar (süre sınırı, dil, ses, deneme hatırlatması), çocuk profilleri (isteğe bağlı ad ve seçilen hayvan avatarı), her profilin tamamlanan dersleri, öğrenilen kelimeleri, çıkartmaları, giydiği kostümü, oynama süresi ve haftalık raporda gösterilen zorlandığı kelimeler, üyelik durumu ve aşağıda anlatılan kimliksiz kullanım sayıları yalnız cihazda saklanır. Haftalık ebeveyn raporu bu bilgilerden cihazda hesaplanır. Uygulama bu bilgileri bize ya da başka birine göndermez. Telefonunuzun kendi yedekleme özelliği (iCloud ya da Google yedeklemesi) açıksa bu bilgiler, diğer uygulama verileri gibi sizin yedeğinize dahil olabilir; bu yedeğe bizim erişimimiz yoktur.</p>
+  <p>Ebeveyn alanındaki “İlerlemeyi sıfırla” düğmesi o an oynayan profilin tamamlanan derslerini, öğrenilen kelimelerini, çıkartmalarını, zorlandığı kelime kaydını ve kostümünü siler; ayarlar, profiller, üyelik durumu, oynama süresi kaydı ve kullanım sayıları bu düğmeyle silinmez. “Profiller” bölümünde bir profili silmek o profilin adını, avatarını ve ilerlemesini siler. Uygulamayı silmek bu bilgilerin tamamını cihazdan siler.</p>
 
   <h3>Hiç istemediğimiz bilgiler</h3>
-  <p>Ad, doğum tarihi, e-posta, telefon numarası, fotoğraf, konum, rehber ya da reklam kimliği istemeyiz ve toplamayız. Uygulamada hesap açma yoktur.</p>
+  <p>Doğum tarihi, e-posta, telefon numarası, fotoğraf, konum, rehber ya da reklam kimliği istemeyiz ve toplamayız. Uygulamada hesap açma yoktur. Ebeveyn alanında bir çocuk profiline isteğe bağlı olarak ad yazabilirsiniz; bu ad yalnız cihazda kalır, bize ya da başka birine gönderilmez ve kullanım sayılarına eklenmez. Ad yazmazsanız profil “Çocuk 1” gibi görünür.</p>
 
   <h3>Kimliksiz kullanım sayıları</h3>
   <p><strong>Bu sürümde (1.0.0) gönderim kapalıdır: uygulama bize ya da başka birine hiçbir kullanım sayısı göndermez.</strong> Uygulama bazı olayları (örneğin o gün kaç ders bitirildiği, ödeme ekranının kaç kez açıldığı, uygulamanın ve cihazın hangi dilde açıldığı, karşılaşılan hata türleri) yalnız gün gün toplam sayı olarak cihazda tutar; en fazla son 60 günün kaydı saklanır.</p>
@@ -64,22 +67,22 @@ a{color:#1F6F66}
   <p>Gönderim ileride bir güncellemeyle açılırsa bu sayfa o güncellemeyle birlikte değiştirilir. O durumda gidecek olan yalnız şunlardır: tamamlanmış günlerin kimliksiz toplamları, uygulama sürümü, platform (iOS/Android) ve günün tarihi. Cihaz kimliği, kullanıcı kimliği, reklam kimliği, serbest metin ya da kişiyi tanıtan başka bir bilgi gönderilmez. Ebeveyn alanındaki “Kimliksiz kullanım sayıları” anahtarı varsayılan olarak açıktır; kapatırsanız hiçbir sayı gönderilmez.</p>
 
   <h3>Mikrofon (isteğe bağlı)</h3>
-  <p>“Konuşma oyunları” varsayılan olarak kapalıdır ve yalnız ebeveyn alanından açılır; mikrofon izni o sırada istenir, oyun sırasında istenmez. Açıksa çocuk kelimeyi söyler (en fazla 3 saniye) ve kendi sesini bir kez dinler. Kayıt cihazın geçici klasöründe bir dosyada tutulur, çalındıktan hemen sonra silinir ve hiçbir yere gönderilmez. Çocuk kayıt sürerken oyundan çıkarsa ya da uygulama arka plana geçerse kayıt durur ve dosya yine hemen silinir. Konuşma tanıma yapılmaz.</p>
+  <p>“Konuşma oyunları” varsayılan olarak kapalıdır ve yalnız ebeveyn alanından açılır; mikrofon izni o sırada istenir, oyun sırasında istenmez. Açıksa çocuk kelimeyi söyler (en fazla 3 saniye) ve kendi sesini bir kez dinler. Kayıt cihazın geçici klasöründe bir dosyada tutulur, çalındıktan hemen sonra silinir ve hiçbir yere gönderilmez. Çocuk kayıt sürerken oyundan çıkarsa ya da uygulama arka plana geçerse kayıt durur ve dosya yine hemen silinir. Konuşma tanıma yapılmaz. Aynı kurallar derslerdeki konuşma adımı ve haritadaki “Papağan” telaffuz pratiği için geçerlidir; konuşma oyunları kapalıysa ikisinde de mikrofon kullanılmaz.</p>
 
   <h3>Satın almalar</h3>
-  <p>Abonelikler ve ömür boyu satın alma App Store ya da Google Play üzerinden yapılır. Ödeme bilgilerinizi biz görmeyiz. Uygulama, üyeliğin etkin olup olmadığını cihazda mağazadan öğrenir. Satın alma ekranı ebeveyn kontrolünün arkasındadır. Aboneliği mağaza hesabınızın ayarlarından istediğiniz zaman iptal edebilirsiniz.</p>
+  <p>Abonelikler ve ömür boyu satın alma App Store ya da Google Play üzerinden yapılır. Ödeme bilgilerinizi biz görmeyiz. Uygulama, üyeliğin etkin olup olmadığını cihazda mağazadan öğrenir. Satın alma ekranı ebeveyn kontrolünün arkasındadır. Aboneliğinizi mağaza hesabınızın abonelik ayarlarından yönetirsiniz.</p>
 
   <h3>Bildirimler (isteğe bağlı)</h3>
-  <p>Ödeme ekranında ücretsiz deneme seçiliyken “Deneme bitmeden 2 gün önce bu cihazda hatırlat” kutusu görünür (varsayılan olarak işaretli). Kutu işaretliyse deneme başladıktan sonra bildirim izni istenir ve izin verirseniz deneme bitiminden 2 gün önce saat 10:00’da cihazınızda bir hatırlatma kurulur. Bu hatırlatma cihazda oluşturulur, sunucuya bilgi gitmez.</p>
+  <p>Ebeveyn alanı → Ayarlar’daki “Deneme hatırlatması” anahtarı varsayılan olarak açıktır. Açıksa ücretsiz deneme başladıktan sonra bildirim izni istenir ve izin verirseniz deneme bitiminden 2 gün önce saat 10:00’da cihazınızda bir hatırlatma kurulur. Anahtarı kapatırsanız kurulmuş hatırlatma iptal edilir. Bu hatırlatma cihazda oluşturulur, sunucuya bilgi gitmez.</p>
 
   <h3>Sesler</h3>
   <p>Uygulamadaki İngilizce ve Türkçe sesler yapay zekâ ile üretilmiştir; gerçek bir kişinin sesi değildir. Sesler önceden hazırlanıp uygulamaya konmuştur; çocuğunuzla ilgili hiçbir bilgi bu iş için kullanılmaz.</p>
 
   <h3>Çocukların gizliliği</h3>
-  <p>Tıpış çocuklar için tasarlanmıştır ve çocuklardan kişisel veri toplamaz. Satın alma, ayarlar ve uygulama dışına giden bağlantılar (gizlilik politikası, bize e-posta, abonelik yönetimi, kullanım koşulları) ebeveyn kontrolünün arkasındadır. İlk açılıştaki ebeveyn tanıtımında yalnız yaş grubu (4-5 ya da 6-8 yaş) sorulur; sonradan ebeveyn alanından değiştirilebilir. Uygulamada reklam, sohbet ya da başka kullanıcılarla iletişim yoktur.</p>
+  <p>Tıpış çocuklar için tasarlanmıştır ve çocuklardan kişisel veri toplamaz. Satın alma, ayarlar ve uygulama dışına giden bağlantılar (gizlilik politikası, bize e-posta, abonelik yönetimi, kullanım koşulları) ebeveyn kontrolünün arkasındadır. İlk açılıştaki ebeveyn tanıtımında yalnız yaş grubu (4-5 ya da 6-8 yaş) sorulur; sonradan ebeveyn alanından değiştirilebilir. Profil ekleme ve profil adı yalnız ebeveyn alanındadır; çocuk ekranında yalnız var olan profiller arasında geçiş yapılır. Uygulamada reklam, sohbet ya da başka kullanıcılarla iletişim yoktur.</p>
 
   <h3>Haklarınız</h3>
-  <p>Kişisel verilerin korunmasıyla ilgili haklarınızı kullanmak ya da soru sormak için <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a> adresine yazabilirsiniz. Cihazdaki bilgilerin tamamını uygulamayı silerek kendiniz silebilirsiniz; “İlerlemeyi sıfırla” ise ders, kelime ve çıkartma ilerlemesini siler.</p>
+  <p>Kişisel verilerin korunmasıyla ilgili haklarınızı kullanmak ya da soru sormak için <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a> adresine yazabilirsiniz. Cihazdaki bilgilerin tamamını uygulamayı silerek kendiniz silebilirsiniz; “İlerlemeyi sıfırla” o profilin ders, kelime, çıkartma ve kostüm ilerlemesini, profil silmek ise o profilin tüm bilgisini siler.</p>
 
   <h3>Değişiklikler</h3>
   <p>Bu politikayı güncellersek tarihini bu sayfada değiştiririz.</p>
@@ -97,33 +100,33 @@ a{color:#1F6F66}
   <p>Tıpış (“Tipish”) is developed by Birim Ajans Yazılım Limited Şirketi (“Birim Ajans”, “we”). Contact: <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a></p>
 
   <h3>What stays on your device only</h3>
-  <p>The age group you choose, settings (time limit, language, sound), finished lessons, learned words, stickers, time played, membership status and the anonymous usage totals described below are stored on the device only. The app does not send them to us or anyone else. If your phone's own backup (iCloud or Google backup) is switched on, this information may be included in your backup like other app data; we have no access to that backup.</p>
-  <p>“Reset progress” in the parent area deletes finished lessons, learned words and stickers; settings, membership status, the time-played record and usage totals are not deleted by it. Deleting the app removes all of this information from the device.</p>
+  <p>The age group you choose, settings (time limit, language, sound, trial reminder), child profiles (optional name and the chosen animal avatar), each profile's finished lessons, learned words, stickers, chosen costume, time played and the tricky words shown in the weekly report, membership status and the anonymous usage totals described below are stored on the device only. The weekly parent report is calculated from this information on the device. The app does not send them to us or anyone else. If your phone's own backup (iCloud or Google backup) is switched on, this information may be included in your backup like other app data; we have no access to that backup.</p>
+  <p>“Reset progress” in the parent area deletes the current profile's finished lessons, learned words, stickers, tricky-word record and costume; settings, profiles, membership status, the time-played record and usage totals are not deleted by it. Deleting a profile under “Profiles” deletes that profile's name, avatar and progress. Deleting the app removes all of this information from the device.</p>
 
   <h3>What we never ask for</h3>
-  <p>We do not ask for or collect names, dates of birth, email addresses, phone numbers, photos, location, contacts or advertising identifiers. There is no account sign-up.</p>
+  <p>We do not ask for or collect dates of birth, email addresses, phone numbers, photos, location, contacts or advertising identifiers. There is no account sign-up. In the parent area you may optionally type a name for a child profile; that name stays on the device, is never sent to us or anyone else and is never added to usage totals. Without a name the profile shows as “Child 1” and so on.</p>
 
   <h3>Anonymous usage totals</h3>
   <p><strong>In this version (1.0.0) sending is switched off: the app sends no usage totals to us or anyone else.</strong> The app keeps some events (for example how many lessons were finished that day, how many times the purchase screen was opened, which language the app and the device opened in, and which kinds of errors occurred) as daily totals on the device only; at most the last 60 days are kept.</p>
   <p>If sending is switched on in a future update, this page will be changed with that update. In that case only the following would be sent: anonymous totals for completed days, the app version, platform (iOS/Android) and the date of the day. No device identifier, user identifier, advertising identifier, free text or other information that identifies a person is sent. The “Anonymous usage totals” switch in the parent area is on by default; if you turn it off, no totals are sent.</p>
 
   <h3>Microphone (optional)</h3>
-  <p>“Speaking games” are off by default and can only be switched on in the parent area, which is when microphone permission is requested; it is not requested during play. When on, your child says a word (up to 3 seconds) and hears their own voice once. The recording is kept in a file in the device's temporary folder, deleted right after playback and never sent anywhere. If your child leaves the game while recording, or the app goes to the background, recording stops and the file is deleted right away as well. No speech recognition is performed.</p>
+  <p>“Speaking games” are off by default and can only be switched on in the parent area, which is when microphone permission is requested; it is not requested during play. When on, your child says a word (up to 3 seconds) and hears their own voice once. The recording is kept in a file in the device's temporary folder, deleted right after playback and never sent anywhere. If your child leaves the game while recording, or the app goes to the background, recording stops and the file is deleted right away as well. No speech recognition is performed. The same rules apply to the speaking step in lessons and to “Parrot” pronunciation practice on the map; with speaking games off, neither uses the microphone.</p>
 
   <h3>Purchases</h3>
-  <p>Subscriptions and the lifetime purchase are made through the App Store or Google Play. We never see your payment details. The app checks with the store, on the device, whether a membership is active. The purchase screen is behind a parental gate. You can cancel a subscription at any time in your store account settings.</p>
+  <p>Subscriptions and the lifetime purchase are made through the App Store or Google Play. We never see your payment details. The app checks with the store, on the device, whether a membership is active. The purchase screen is behind a parental gate. You manage your subscription in your store account's subscription settings.</p>
 
   <h3>Notifications (optional)</h3>
-  <p>When the free trial is selected on the purchase screen, a “Remind me on this device 2 days before the trial ends” box is shown (ticked by default). If it is ticked, notification permission is requested after the trial starts and, if you allow it, a reminder is set on your device for 10:00 two days before the trial ends. It is created on the device; no information is sent to a server.</p>
+  <p>The “Trial reminder” switch under Parent area → Settings is on by default. When it is on, notification permission is requested after a free trial starts and, if you allow it, a reminder is set on your device for 10:00 two days before the trial ends. Turning the switch off cancels a scheduled reminder. It is created on the device; no information is sent to a server.</p>
 
   <h3>Voices</h3>
   <p>The English and Turkish voices in the app were generated with AI; they are not a real person's voice. They were prepared in advance and bundled with the app; no information about your child is used for this.</p>
 
   <h3>Children's privacy</h3>
-  <p>Tıpış is designed for children and does not collect personal data from children. Purchases, settings and links that leave the app (privacy policy, email to us, subscription management, terms of use) are behind a parental gate. The first-launch introduction for parents asks only for an age group (ages 4-5 or 6-8), which can later be changed in the parent area. There are no ads, no chat and no contact with other users.</p>
+  <p>Tıpış is designed for children and does not collect personal data from children. Purchases, settings and links that leave the app (privacy policy, email to us, subscription management, terms of use) are behind a parental gate. The first-launch introduction for parents asks only for an age group (ages 4-5 or 6-8), which can later be changed in the parent area. Adding profiles and profile names happen only in the parent area; on the child's screens children can only switch between existing profiles. There are no ads, no chat and no contact with other users.</p>
 
   <h3>Your rights</h3>
-  <p>To exercise your data protection rights or ask a question, write to <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a>. You can delete all on-device information yourself by deleting the app; “Reset progress” deletes lesson, word and sticker progress.</p>
+  <p>To exercise your data protection rights or ask a question, write to <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a>. You can delete all on-device information yourself by deleting the app; “Reset progress” deletes that profile's lesson, word, sticker and costume progress, and deleting a profile removes all of its information.</p>
 
   <h3>Changes</h3>
   <p>If we update this policy, we will change the date on this page.</p>

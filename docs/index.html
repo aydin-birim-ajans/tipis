@@ -10,6 +10,9 @@
      24 Eylül 2026 b5: çocuk profilleri (isteğe bağlı ad, yalnız cihazda), haftalık rapor, kostüm, hatırlatmanın ebeveyn ayarına
      taşınması, Papağan pratiği ve abonelik yönetimi cümlesi koda uyduruldu (lib/core/profiller.dart, lib/ebeveyn/ebeveyn_alani.dart,
      lib/ebeveyn/odeme.dart, lib/oyunlar/papagan_pratik.dart).
+     25 Eylül 2026 b6/b7: günlük ders hatırlatması (lib/core/bildirim.dart, lib/ebeveyn/ebeveyn_alani.dart 'ayar-gunluk'):
+     varsayılan kapalı, izin ebeveyn alanında, 16:00-20:00 saat seçimi, günde en çok 1, 22:00-09:00 sessiz, oynanan gün ve deneme
+     hatırlatması günü atlanır, 7 gün ufuk, sabit metin, yalnız cihazda (push yok); bildirim olayları yerel sayaca.
      Yayın yeri: https://aydin-birim-ajans.github.io/tipis/ (GitHub Pages, yayından önce Aydın'ın onayıyla). -->
 <style>
 :root{--ink:#12343B;--sand:#F6E7C8;--cream:#FFF8EC;--sea:#2BB3A3;--coral:#FF6B4A;--mute:#5B6B6E}
@@ -37,7 +40,7 @@ a{color:#1F6F66}
 <body>
 <header><div class="kap">
   <h1>Tıpış gizlilik politikası</h1>
-  <p>Son güncelleme: 24 Eylül 2026</p>
+  <p>Son güncelleme: 25 Eylül 2026</p>
   <div class="dil"><a href="#tr">Türkçe</a><a href="#en">English</a></div>
 </div></header>
 <main class="kap">
@@ -54,14 +57,14 @@ a{color:#1F6F66}
   <p>Tıpış uygulamasını Birim Ajans Yazılım Limited Şirketi (“Birim Ajans”, “biz”) geliştirir. Sorularınız için: <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a></p>
 
   <h3>Hangi bilgiler yalnız cihazınızda kalır</h3>
-  <p>Seçtiğiniz yaş grubu, ayarlar (süre sınırı, dil, ses, deneme hatırlatması), çocuk profilleri (isteğe bağlı ad ve seçilen hayvan avatarı), her profilin tamamlanan dersleri, öğrenilen kelimeleri, çıkartmaları, giydiği kostümü, oynama süresi ve haftalık raporda gösterilen zorlandığı kelimeler, üyelik durumu ve aşağıda anlatılan kimliksiz kullanım sayıları yalnız cihazda saklanır. Haftalık ebeveyn raporu bu bilgilerden cihazda hesaplanır. Uygulama bu bilgileri bize ya da başka birine göndermez. Telefonunuzun kendi yedekleme özelliği (iCloud ya da Google yedeklemesi) açıksa bu bilgiler, diğer uygulama verileri gibi sizin yedeğinize dahil olabilir; bu yedeğe bizim erişimimiz yoktur.</p>
+  <p>Seçtiğiniz yaş grubu, ayarlar (süre sınırı, dil, ses, deneme hatırlatması, günlük ders hatırlatması ve saati), çocuk profilleri (isteğe bağlı ad ve seçilen hayvan avatarı), her profilin tamamlanan dersleri, öğrenilen kelimeleri, çıkartmaları, giydiği kostümü, oynama süresi ve haftalık raporda gösterilen zorlandığı kelimeler, üyelik durumu ve aşağıda anlatılan kimliksiz kullanım sayıları yalnız cihazda saklanır. Haftalık ebeveyn raporu bu bilgilerden cihazda hesaplanır. Uygulama bu bilgileri bize ya da başka birine göndermez. Telefonunuzun kendi yedekleme özelliği (iCloud ya da Google yedeklemesi) açıksa bu bilgiler, diğer uygulama verileri gibi sizin yedeğinize dahil olabilir; bu yedeğe bizim erişimimiz yoktur.</p>
   <p>Ebeveyn alanındaki “İlerlemeyi sıfırla” düğmesi o an oynayan profilin tamamlanan derslerini, öğrenilen kelimelerini, çıkartmalarını, zorlandığı kelime kaydını ve kostümünü siler; ayarlar, profiller, üyelik durumu, oynama süresi kaydı ve kullanım sayıları bu düğmeyle silinmez. “Profiller” bölümünde bir profili silmek o profilin adını, avatarını ve ilerlemesini siler. Uygulamayı silmek bu bilgilerin tamamını cihazdan siler.</p>
 
   <h3>Hiç istemediğimiz bilgiler</h3>
   <p>Doğum tarihi, e-posta, telefon numarası, fotoğraf, konum, rehber ya da reklam kimliği istemeyiz ve toplamayız. Uygulamada hesap açma yoktur. Ebeveyn alanında bir çocuk profiline isteğe bağlı olarak ad yazabilirsiniz; bu ad yalnız cihazda kalır, bize ya da başka birine gönderilmez ve kullanım sayılarına eklenmez. Ad yazmazsanız profil “Çocuk 1” gibi görünür.</p>
 
   <h3>Kimliksiz kullanım sayıları</h3>
-  <p><strong>Bu sürümde (1.0.0) gönderim kapalıdır: uygulama bize ya da başka birine hiçbir kullanım sayısı göndermez.</strong> Uygulama bazı olayları (örneğin o gün kaç ders bitirildiği, ödeme ekranının kaç kez açıldığı, uygulamanın ve cihazın hangi dilde açıldığı, karşılaşılan hata türleri) yalnız gün gün toplam sayı olarak cihazda tutar; en fazla son 60 günün kaydı saklanır.</p>
+  <p><strong>Bu sürümde (1.0.0) gönderim kapalıdır: uygulama bize ya da başka birine hiçbir kullanım sayısı göndermez.</strong> Uygulama bazı olayları (örneğin o gün kaç ders bitirildiği, ödeme ekranının kaç kez açıldığı, uygulamanın ve cihazın hangi dilde açıldığı, bildirim izninin verilip verilmediği, kurulan ve dokunulan bildirimin türü, karşılaşılan hata türleri) yalnız gün gün toplam sayı olarak cihazda tutar; en fazla son 60 günün kaydı saklanır.</p>
   <!-- IP iddiası kaldırıldı (24 Eylül 2026): 1.0.0 SAYAC_URL boş derleniyor, sayaç sunucusu kurulmadı.
        "Sunucumuz IP adresini kayıt altına almaz" cümlesi ancak sunucu kurulup IP tutmadığı doğrulandıktan sonra eklenir (genel kural 12). -->
   <p>Gönderim ileride bir güncellemeyle açılırsa bu sayfa o güncellemeyle birlikte değiştirilir. O durumda gidecek olan yalnız şunlardır: tamamlanmış günlerin kimliksiz toplamları, uygulama sürümü, platform (iOS/Android) ve günün tarihi. Cihaz kimliği, kullanıcı kimliği, reklam kimliği, serbest metin ya da kişiyi tanıtan başka bir bilgi gönderilmez. Ebeveyn alanındaki “Kimliksiz kullanım sayıları” anahtarı varsayılan olarak açıktır; kapatırsanız hiçbir sayı gönderilmez.</p>
@@ -74,6 +77,8 @@ a{color:#1F6F66}
 
   <h3>Bildirimler (isteğe bağlı)</h3>
   <p>Ebeveyn alanı → Ayarlar’daki “Deneme hatırlatması” anahtarı varsayılan olarak açıktır. Açıksa ücretsiz deneme başladıktan sonra bildirim izni istenir ve izin verirseniz deneme bitiminden 2 gün önce saat 10:00’da cihazınızda bir hatırlatma kurulur. Anahtarı kapatırsanız kurulmuş hatırlatma iptal edilir. Bu hatırlatma cihazda oluşturulur, sunucuya bilgi gitmez.</p>
+  <p>“Günlük ders hatırlatması” anahtarı varsayılan olarak kapalıdır ve yalnız ebeveyn alanından, yani ebeveyn kapısından geçilerek açılabilir; bildirim izni o sırada istenir. İzin verirseniz bu cihazda, seçtiğiniz saatte (16:00–20:00 arası) günde en fazla bir bildirim gösterilir. Bildirim metni sabittir: “Bugünkü ders hazır”. Çocuğun adı, profili, ilerlemesi ya da başka bir kişisel bilgi yazılmaz; reklam ya da satın alma çağrısı içermez. 22:00–09:00 arasında bildirim gönderilmez. O gün uygulamada oynandıysa ya da deneme hatırlatmasının geleceği günse günlük hatırlatma kurulmaz. Uygulama 7 gün açılmazsa hatırlatmalar kendiliğinden biter. Anahtarı kapatırsanız kurulmuş hatırlatmalar iptal edilir.</p>
+  <p>Tüm bildirimler yalnız cihazda kurulur. Uzak bildirim (push) kullanılmaz; bildirim için sunucuya bilgi gitmez, bildirim jetonu ya da cihaz kimliği alınmaz.</p>
 
   <h3>Sesler</h3>
   <p>Uygulamadaki İngilizce ve Türkçe sesler yapay zekâ ile üretilmiştir; gerçek bir kişinin sesi değildir. Sesler önceden hazırlanıp uygulamaya konmuştur; çocuğunuzla ilgili hiçbir bilgi bu iş için kullanılmaz.</p>
@@ -100,14 +105,14 @@ a{color:#1F6F66}
   <p>Tıpış (“Tipish”) is developed by Birim Ajans Yazılım Limited Şirketi (“Birim Ajans”, “we”). Contact: <a href="mailto:nonanik@gmail.com">nonanik@gmail.com</a></p>
 
   <h3>What stays on your device only</h3>
-  <p>The age group you choose, settings (time limit, language, sound, trial reminder), child profiles (optional name and the chosen animal avatar), each profile's finished lessons, learned words, stickers, chosen costume, time played and the tricky words shown in the weekly report, membership status and the anonymous usage totals described below are stored on the device only. The weekly parent report is calculated from this information on the device. The app does not send them to us or anyone else. If your phone's own backup (iCloud or Google backup) is switched on, this information may be included in your backup like other app data; we have no access to that backup.</p>
+  <p>The age group you choose, settings (time limit, language, sound, trial reminder, daily lesson reminder and its time), child profiles (optional name and the chosen animal avatar), each profile's finished lessons, learned words, stickers, chosen costume, time played and the tricky words shown in the weekly report, membership status and the anonymous usage totals described below are stored on the device only. The weekly parent report is calculated from this information on the device. The app does not send them to us or anyone else. If your phone's own backup (iCloud or Google backup) is switched on, this information may be included in your backup like other app data; we have no access to that backup.</p>
   <p>“Reset progress” in the parent area deletes the current profile's finished lessons, learned words, stickers, tricky-word record and costume; settings, profiles, membership status, the time-played record and usage totals are not deleted by it. Deleting a profile under “Profiles” deletes that profile's name, avatar and progress. Deleting the app removes all of this information from the device.</p>
 
   <h3>What we never ask for</h3>
   <p>We do not ask for or collect dates of birth, email addresses, phone numbers, photos, location, contacts or advertising identifiers. There is no account sign-up. In the parent area you may optionally type a name for a child profile; that name stays on the device, is never sent to us or anyone else and is never added to usage totals. Without a name the profile shows as “Child 1” and so on.</p>
 
   <h3>Anonymous usage totals</h3>
-  <p><strong>In this version (1.0.0) sending is switched off: the app sends no usage totals to us or anyone else.</strong> The app keeps some events (for example how many lessons were finished that day, how many times the purchase screen was opened, which language the app and the device opened in, and which kinds of errors occurred) as daily totals on the device only; at most the last 60 days are kept.</p>
+  <p><strong>In this version (1.0.0) sending is switched off: the app sends no usage totals to us or anyone else.</strong> The app keeps some events (for example how many lessons were finished that day, how many times the purchase screen was opened, which language the app and the device opened in, whether notification permission was given, the type of notification set or tapped, and which kinds of errors occurred) as daily totals on the device only; at most the last 60 days are kept.</p>
   <p>If sending is switched on in a future update, this page will be changed with that update. In that case only the following would be sent: anonymous totals for completed days, the app version, platform (iOS/Android) and the date of the day. No device identifier, user identifier, advertising identifier, free text or other information that identifies a person is sent. The “Anonymous usage totals” switch in the parent area is on by default; if you turn it off, no totals are sent.</p>
 
   <h3>Microphone (optional)</h3>
@@ -118,6 +123,8 @@ a{color:#1F6F66}
 
   <h3>Notifications (optional)</h3>
   <p>The “Trial reminder” switch under Parent area → Settings is on by default. When it is on, notification permission is requested after a free trial starts and, if you allow it, a reminder is set on your device for 10:00 two days before the trial ends. Turning the switch off cancels a scheduled reminder. It is created on the device; no information is sent to a server.</p>
+  <p>The “Daily lesson reminder” switch is off by default and can only be turned on in the parent area, that is, behind the parental gate; notification permission is requested at that moment. If you allow it, this device shows at most one notification a day at the time you choose (between 16:00 and 20:00). The notification text is fixed: “Today's lesson is ready”. It never shows your child's name, profile, progress or any other personal information, and it contains no advertising or purchase prompt. No notification is sent between 22:00 and 09:00. On days your child has already played, or on the day the trial reminder is due, no daily reminder is set. If the app is not opened for 7 days, the reminders stop by themselves. Turning the switch off cancels scheduled reminders.</p>
+  <p>All notifications are set on the device only. Push notifications are not used; no information is sent to a server for notifications, and no notification token or device identifier is collected.</p>
 
   <h3>Voices</h3>
   <p>The English and Turkish voices in the app were generated with AI; they are not a real person's voice. They were prepared in advance and bundled with the app; no information about your child is used for this.</p>
